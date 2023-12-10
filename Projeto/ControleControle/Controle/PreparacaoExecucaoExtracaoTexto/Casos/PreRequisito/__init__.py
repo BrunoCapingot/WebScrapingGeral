@@ -17,7 +17,5 @@ class PreRequisito(Requisitos):
                 if dado.__len__() > 0 and (dado[-1] == '-'):
                     save_dict['pre_requisito'] += dado.pop()
                     save_dict['pre_requisito'] += dado.pop()
-        print(save_dict)
-        print(dado)
         return list((save_dict['pre_requisito'],dado))
 

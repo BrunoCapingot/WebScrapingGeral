@@ -5,9 +5,10 @@ class DataInput:
     def __init__(self)->None:
         self.dicionarioPrincipal = dict(
             caminhos_de_relacao = dict(
-                projeto_pedagogico= r'C:\Users\CPGT\Desktop\webScraping\Projeto\Download\projetoPedagogicoCurso',
-                txt= r'C:\Users\CPGT\Desktop\webScraping\Projeto\Download\Textos',
-                csv= r'C:\Users\CPGT\Desktop\webScraping\Projeto\Download\Csv',
+                projeto_pedagogico= r'C:\Users\CPGT\Desktop\WebScrapingGeral\Projeto\Download\projetoPedagogicoCurso',
+                ementa= r'C:\Users\CPGT\Desktop\WebScrapingGeral\Projeto\Download\Ementas',
+                txt= r'C:\Users\CPGT\Desktop\WebScrapingGeral\Projeto\Download\Textos',
+                csv= r'C:\Users\CPGT\Desktop\WebScrapingGeral\Projeto\Download\Csv',
         ),
             localização_nome_link_comando = {
                 'Bacharelado em Agronomia': {

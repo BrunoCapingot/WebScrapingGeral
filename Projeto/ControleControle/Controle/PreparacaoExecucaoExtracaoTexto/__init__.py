@@ -1,7 +1,5 @@
-from Projeto.ControleControle.Controle.PreparacaoExecucaoExtracaoTexto.ExtracaoTextoAgronomia import \
-    ExtracaoTextoAgronomia
-from Projeto.ControleControle.Controle.PreparacaoExecucaoExtracaoTexto.ExtracaoTextoAlimentos import \
-    ExtracaoTextoAlimentos
+from Projeto.ControleControle.Controle.PreparacaoExecucaoExtracaoTexto.ExtracaoTextoAgronomia import ExtracaoTextoAgronomia
+from Projeto.ControleControle.Controle.PreparacaoExecucaoExtracaoTexto.ExtracaoTextoAlimentos import ExtracaoTextoAlimentos
 
 
 class PreparacaoExecucaoExtracaoTexto:

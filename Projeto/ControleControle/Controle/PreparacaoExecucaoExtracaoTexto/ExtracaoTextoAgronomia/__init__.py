@@ -4,20 +4,19 @@ from Projeto.ControleControle.Controle.PreparacaoExecucaoExtracaoTexto.Casos.Aul
 from Projeto.ControleControle.Controle.PreparacaoExecucaoExtracaoTexto.Casos.CargaHoraria import CargaHoraria
 from Projeto.ControleControle.Controle.PreparacaoExecucaoExtracaoTexto.Casos.CodigoDaDiciplina import CodigoDaDiciplina
 from Projeto.ControleControle.Controle.PreparacaoExecucaoExtracaoTexto.Casos.Diciplina import Diciplina
+from Projeto.ControleControle.Controle.PreparacaoExecucaoExtracaoTexto.Casos.Ementa import Ementa
 from Projeto.ControleControle.Controle.PreparacaoExecucaoExtracaoTexto.Casos.PreRequisito import PreRequisito
 from Projeto.ControleControle.Controle.PreparacaoExecucaoExtracaoTexto.Casos.Periodo import Periodo
-
-from Projeto.ControleControle.Controle.ControleModelo import ControleModelo
+import csv
+from sys import argv
+from typing import Type
+from Projeto.ControleControle.Controle.Factory.Os import Os
 from Projeto.ControleControle.Controle.Factory.Arquivo import Arquivo
 from Projeto.ControleControle.Controle.Factory.DataInput import DataInput
-from Projeto.ControleControle.Controle.Factory.Os import Os
+from Projeto.ControleControle.Controle.ControleModelo import ControleModelo
 from Projeto.ControleControle.Controle.ControleProcessos.Processo import Processo
-from typing import Type
-from sys import argv
-import csv
 
-
-class ExtracaoTextoAgronomia(Processo,PreRequisito,AulasSemanais,CargaHoraria,AulasPraticas,AulasTeoricas,Diciplina,CodigoDaDiciplina,Periodo):
+class ExtracaoTextoAgronomia(Processo,PreRequisito,AulasSemanais,CargaHoraria,AulasPraticas,AulasTeoricas,Diciplina,CodigoDaDiciplina,Periodo,Ementa):
     def executar(self, object_list):
         self.execucao(Arquivo=object_list[0], DataInput=object_list[1], Os=object_list[2],ControleModelo=object_list[3])
 
@@ -26,13 +25,13 @@ class ExtracaoTextoAgronomia(Processo,PreRequisito,AulasSemanais,CargaHoraria,Au
         for item_dir_name in Os.get_dir_pointer_name_items():
             if item_dir_name == 'Bacharelado em Agronomia.pdf':
                 total_text = self.extracaoPrimaria(item_dir_name=item_dir_name, Os=Os, DataInput=DataInput,suport=suport)
-                self.extracaoPrimariaEmPosicao(Os=Os,DataInput=DataInput,item_dir_name=item_dir_name,total_text=total_text)
-                Os.set_ponteiro(caminho_facrionado=DataInput.get_caminhos_de_relacao()['txt'])
+                #self.extracaoPrimariaEmPosicao(Os=Os,DataInput=DataInput,item_dir_name=item_dir_name,total_text=total_text)
+                self.requisito_extracaoPrimariaEmEmenta(Os=Os,DataInput=DataInput,total_text=total_text,item_dir_name=item_dir_name)
+                """Os.set_ponteiro(caminho_facrionado=DataInput.get_caminhos_de_relacao()['txt'])
                 for dado in Os.read(type_read='txt',arquivo=Arquivo(nome=item_dir_name.replace('pdf','txt'),caminho=DataInput.get_caminhos_de_relacao()['txt'],conteudo='')).split('\n'):
                     if dado.__len__() != 0 and dado != '':
                         dado = dado.split()
                         if dado != ' ' and (not 'Total' in dado and not 'AGRONOMIA ' in dado and dado.__len__() > 5 and not 'ATC-202' in dado):
-                            p
                             save_dict['pre_requisito'], dado = self.requisito_extracao_pre_requisito(dado=dado)
                             save_dict['aulas_semanais'], dado = self.requisito_extracao_aulas_semanais(dado=dado)
                             save_dict['c_h_total'], dado = self.requisito_extracao_carga_horaria_total(dado=dado)
@@ -49,7 +48,7 @@ class ExtracaoTextoAgronomia(Processo,PreRequisito,AulasSemanais,CargaHoraria,Au
                             writer = csv.DictWriter(file, fieldnames=fieldnames)
                             writer.writeheader()
                             writer.writerow(csv_dict)
-                        save_dict = dict()
+                        save_dict = dict()"""
 
 
 
@@ -68,7 +67,7 @@ class ExtracaoTextoAgronomia(Processo,PreRequisito,AulasSemanais,CargaHoraria,Au
 
 
 
-    def extracaoPrimaria(self, item_dir_name: str, suport: int, Os: Os, DataInput: DataInput,total_text = str()) -> Type[str]:
+    def extracaoPrimaria(self, item_dir_name: str, suport: int, Os: Os, DataInput: DataInput,total_text = str()) -> str:
         pdf = Os.extract_content_pointer_path(tipo='pdf', Arquivo=Arquivo(nome=item_dir_name,caminho=DataInput.get_caminhos_de_relacao()['projeto_pedagogico'], conteudo=str()))
         while len(pdf) != suport:
             dt = pdf[suport].extract_text()
@@ -76,7 +75,6 @@ class ExtracaoTextoAgronomia(Processo,PreRequisito,AulasSemanais,CargaHoraria,Au
             dt = dt.rstrip()
             total_text += pdf[suport].extract_text()
             suport += 1
-
         return total_text
 
     def extracaoPrimariaEmPosicao(self,total_text:str,Os:Os,DataInput,item_dir_name,content = str())->Type[None]:

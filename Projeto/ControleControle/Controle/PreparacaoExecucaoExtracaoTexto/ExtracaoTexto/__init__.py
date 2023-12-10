@@ -1,8 +1,9 @@
+from Projeto.ControleControle.Controle.ControleProcessos.Processo import Processo
 from Projeto.ControleControle.Controle.ControleModelo import ControleModelo
 from Projeto.ControleControle.Controle.Factory.Arquivo import Arquivo
 from Projeto.ControleControle.Controle.Factory.DataInput import DataInput
 from Projeto.ControleControle.Controle.Factory.Os import Os
-from Projeto.ControleControle.Controle.ControleProcessos.Processo import Processo
+
 
 class ExtracaoDeTexto(Processo):
     def executar(self, object_list):

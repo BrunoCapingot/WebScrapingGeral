@@ -24,10 +24,10 @@ class ExtracaoTextoAgronomia(Processo,PreRequisito,AulasSemanais,CargaHoraria,Au
         Os.set_ponteiro(DataInput.get_caminhos_de_relacao()['projeto_pedagogico'])
         for item_dir_name in Os.get_dir_pointer_name_items():
             if item_dir_name == 'Bacharelado em Agronomia.pdf':
-                total_text = self.extracaoPrimaria(item_dir_name=item_dir_name, Os=Os, DataInput=DataInput,suport=suport)
-                self.extracaoPrimariaEmPosicao(Os=Os,DataInput=DataInput,item_dir_name=item_dir_name,total_text=total_text)
-                self.requisito_extracaoPrimariaEmEmenta(Os=Os,DataInput=DataInput,total_text=total_text,item_dir_name=item_dir_name)
-                """Os.set_ponteiro(caminho_facrionado=DataInput.get_caminhos_de_relacao()['txt'])
+                #total_text = self.extracaoPrimaria(item_dir_name=item_dir_name, Os=Os, DataInput=DataInput,suport=suport)
+                #self.extracaoPrimariaEmPosicao(Os=Os,DataInput=DataInput,item_dir_name=item_dir_name,total_text=total_text)
+                #self.requisito_extracaoPrimariaEmEmenta(Os=Os,DataInput=DataInput,total_text=total_text,item_dir_name=item_dir_name)
+                Os.set_ponteiro(caminho_facrionado=DataInput.get_caminhos_de_relacao()['txt'])
                 for dado in Os.read(type_read='txt',arquivo=Arquivo(nome=item_dir_name.replace('pdf','txt'),caminho=DataInput.get_caminhos_de_relacao()['txt'],conteudo='')).split('\n'):
                     if dado.__len__() != 0 and dado != '':
                         dado = dado.split()
@@ -48,7 +48,7 @@ class ExtracaoTextoAgronomia(Processo,PreRequisito,AulasSemanais,CargaHoraria,Au
                             writer = csv.DictWriter(file, fieldnames=fieldnames)
                             writer.writeheader()
                             writer.writerow(csv_dict)
-                        save_dict = dict()"""
+                        save_dict = dict()
 
 
 

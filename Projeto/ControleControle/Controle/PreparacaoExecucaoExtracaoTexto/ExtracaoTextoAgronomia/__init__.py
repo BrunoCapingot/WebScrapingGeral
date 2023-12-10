@@ -25,7 +25,7 @@ class ExtracaoTextoAgronomia(Processo,PreRequisito,AulasSemanais,CargaHoraria,Au
         for item_dir_name in Os.get_dir_pointer_name_items():
             if item_dir_name == 'Bacharelado em Agronomia.pdf':
                 total_text = self.extracaoPrimaria(item_dir_name=item_dir_name, Os=Os, DataInput=DataInput,suport=suport)
-                #self.extracaoPrimariaEmPosicao(Os=Os,DataInput=DataInput,item_dir_name=item_dir_name,total_text=total_text)
+                self.extracaoPrimariaEmPosicao(Os=Os,DataInput=DataInput,item_dir_name=item_dir_name,total_text=total_text)
                 self.requisito_extracaoPrimariaEmEmenta(Os=Os,DataInput=DataInput,total_text=total_text,item_dir_name=item_dir_name)
                 """Os.set_ponteiro(caminho_facrionado=DataInput.get_caminhos_de_relacao()['txt'])
                 for dado in Os.read(type_read='txt',arquivo=Arquivo(nome=item_dir_name.replace('pdf','txt'),caminho=DataInput.get_caminhos_de_relacao()['txt'],conteudo='')).split('\n'):
@@ -116,5 +116,7 @@ class ExtracaoTextoAgronomia(Processo,PreRequisito,AulasSemanais,CargaHoraria,Au
         content=content.replace('das unidades \ncurriculares','das unidades curriculares')
         content=content.replace('estágio curri-\n','estágio curri')
         content=content.replace('(Milho, Arroz, Trigo e \n','(Milho, Arroz, Trigo e ')
+        content=content.replace('BIBLIOGRA FIA BÁSICA','BIBLIOGRAFIA BÁSICA')
+        content=content.replace('BIBLIOGRAF IA \n','BIBLIOGRAFIA')
 
         Os.save(type_save='txt',arquivo=Arquivo(nome=item_dir_name.replace('.pdf','.txt'),caminho=DataInput.get_caminhos_de_relacao()['txt'],conteudo=content))

@@ -1,31 +1,32 @@
 import time
+from Projeto.ControleControle.Controle.Factory.Driver import Driver
 
 
-class Web:
-    def __init__(self, driver):
+class Web(Driver):
+    def __init__(self):
+        super().__init__()
         print('iniciando driver')
-        self.driver = driver
 
     def open_link(self, link: str):
-        self.driver.open("{}".format(link))
+        self.open("{}".format(link))
         time.sleep(5)
 
-    def clickElementoPorComando(self, comand):
+    def clickElementoPorComando(self, comand:str):
 
         if 'id' in comand:
-            self.driver.clickFromXpath(comand)
+            self.clickFromXpath(comand)
             return 'xpath'
         elif '/html' in comand:
-            self.driver.clickFromXpath(comand)
+            self.clickFromXpath(comand)
             return 'xpath'
         elif 'content' in comand:
-            self.driver.clickFromCssSelector(comand)
+            self.clickFromCssSelector(comand)
             return 'css_selector'
         elif 'pdfDownloadLinkUrl' in comand:
-            return self.driver.getListLink()
+            return self.getListLink()
         elif 'finishWeb' in comand:
             print('Finalizando Web')
-            self.driver.quit()
+            self.quit()
             time.sleep(3)
             print('Web finalizado')
             return 'finishWeb'

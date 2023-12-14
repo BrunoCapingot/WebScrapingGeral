@@ -1,7 +1,7 @@
 from Projeto.ControleModelo import ControleModelo
-from Projeto.ControleControle.Controle.Factory.Arquivo import Arquivo
-from Projeto.ControleControle.Controle.Factory.DataInput import DataInput
-from Projeto.ControleControle.Controle.Factory.Os import Os
+from Projeto.ControleModelo.Modelo.Arquivo import Arquivo
+from Projeto.ControleModelo.Modelo.DataInput import DataInput
+from Projeto.ControleModelo.Modelo.Os import Os
 from Projeto.ControleControle.Controle.ControleProcessos.Processo import Processo
 
 class ExtracaoTextoZootecnia(Processo):

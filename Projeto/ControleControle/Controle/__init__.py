@@ -1,16 +1,12 @@
 from Projeto.ControleControle.Controle.Factory import Factory
 from Projeto.ControleControle.Controle.ControleProcessos import ControleProcessos
 from Projeto.ControleControle.Controle.ControleMotor import ControleMotor
-from Projeto.ControleControle.Controle.Factory.VarreduraWeb import VarreduraWeb
-from Projeto.ControleControle.Controle.Factory.PreparacaoExecucaoExtracaoTexto import PreparacaoExecucaoExtracaoTexto
-from Projeto.ControleControle.Controle.Factory.PreparacaoCalculoSimilaridade import PreparacaCalculoSimilaridade
 from Projeto.ControleModelo import ControleModelo
-from Projeto.ControleControle.Controle.EstruturaX import EstruturaX
 
 
-class Controle:
+class Controle(Factory):
     def __init__(self):
-        self.estrutura_x = EstruturaX()
+        self.estrutura_x = self.get_extrutura_x()
         self.estrutura_x.addInTable(pos=0, object=ControleProcessos())
         self.estrutura_x.addInTable(pos=0, object=ControleMotor())
         self.estrutura_x.addInTable(pos=0, object=Factory())
@@ -18,7 +14,7 @@ class Controle:
 
 
     def preparacoes_execucao_varredura_web(self):
-        self.inserir_processo(processo=VarreduraWeb(nome=type, prioridade=10))
+        self.inserir_processo(processo=self.get_varredura_web())
         lista = self.carregar(pos=0,object_name='ControleProcessos').get_lista_processo()
         self.carregar(pos=0,object_name='ControleMotor').adicionar_processos(process_list=lista)
         self.carregar(pos=0, object_name='ControleMotor').iniciar_execucao(
@@ -29,7 +25,7 @@ class Controle:
                 self.carregar(pos=0,object_name='ControleModelo')
             ])
     def preparacao_extrair_texto(self):
-        self.inserir_processo(processo=PreparacaoExecucaoExtracaoTexto.get_preparacao())
+        self.inserir_processo(processo=self.get_preparacao_execucao_extracao_texto().get_preparacao())
         self.carregar(pos=0, object_name='ControleMotor').adicionar_processos(process_list=self.carregar(pos=0, object_name='ControleProcessos').get_lista_processo())
         self.carregar(pos=0, object_name='ControleMotor').iniciar_execucao(object_list=[
             self.carregar(pos=0, object_name='Factory').get_factory(type_factory='Arquivo'),
@@ -39,7 +35,7 @@ class Controle:
         ])
 
     def preparacao_extrair_similaridade(self):
-        self.inserir_processo(processo=PreparacaCalculoSimilaridade.get_preparacao())
+        self.inserir_processo(processo=self.get_preparacao_calculo_similaridade().get_preparacao())
         self.carregar(pos=0, object_name='ControleMotor').adicionar_processos(process_list=self.carregar(pos=0, object_name='ControleProcessos').get_lista_processo())
         self.carregar(pos=0, object_name='ControleMotor').iniciar_execucao(object_list=[
             self.carregar(pos=0, object_name='Factory').get_factory(type_factory='Arquivo'),
@@ -71,3 +67,4 @@ class Controle:
             self.estrutura_x.getInTable(type_return=object,pos=0,object_name='ControleProcessos').adicionar_processo(processo=processo)
         elif type(processo) == list:
             self.estrutura_x.getInTable(type_return=object, pos=0, object_name='ControleProcessos').add_process_list(process_list=processo)
+

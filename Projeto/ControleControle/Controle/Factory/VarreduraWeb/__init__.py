@@ -17,5 +17,9 @@ class VarreduraWeb(Processo):
             for link in DataInput_comandos[nome]:
                 Web.open_link(link=link)
                 for comando in DataInput_comandos[nome][link]:
-                    [ControleModelo.add_download_list(Arquivo=Arquivo(nome=nome, caminho=DataInput_caminhos['projeto_pedagogico'],link=link)) for links in Web.clickElementoPorComando(comand=comando) if '.pdf' in links]
+                    [ControleModelo.add_download_list(
+                        Arquivo=Arquivo(
+                            nome=nome, caminho=DataInput_caminhos['projeto_pedagogico'],link=link)
+                    )
+                        for links in Web.clickElementoPorComando(comand=comando) if '.pdf' in links]
         ControleModelo.download_list_dowload()

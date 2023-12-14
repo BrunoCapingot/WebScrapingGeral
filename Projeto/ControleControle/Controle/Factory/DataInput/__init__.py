@@ -6,7 +6,7 @@ class DataInput:
         self.dicionarioPrincipal = dict(
             caminhos_de_relacao = dict(
                 projeto_pedagogico= r'C:\Users\CPGT\Desktop\WebScrapingGeral\Projeto\Download\projetoPedagogicoCurso',
-                ementa= r'C:\Users\CPGT\Desktop\WebScrapingGeral\Projeto\Download\Ementas',
+                ementa= r'C:\Users\CPGT\Desktop\WebScrapingGeral\Projeto\Download\Csv',
                 txt= r'C:\Users\CPGT\Desktop\WebScrapingGeral\Projeto\Download\Textos',
                 csv= r'C:\Users\CPGT\Desktop\WebScrapingGeral\Projeto\Download\Csv',
         ),

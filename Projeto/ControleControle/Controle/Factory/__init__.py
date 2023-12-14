@@ -4,7 +4,7 @@ from Projeto.ControleControle.Controle.Factory.DataInput import DataInput
 from Projeto.ControleControle.Controle.Factory.Driver import Driver
 from Projeto.ControleControle.Controle.Factory.Os import Os
 from Projeto.ControleControle.Controle.Factory.Web import Web
-from Projeto.ControleControle.Controle.VarreduraWeb import VarreduraWeb
+from Projeto.ControleControle.Controle.Factory.VarreduraWeb import VarreduraWeb
 
 
 class FacFactory(ABC):

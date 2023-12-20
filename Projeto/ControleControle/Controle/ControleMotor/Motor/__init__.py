@@ -1,3 +1,6 @@
+from Projeto.ControleControle.Controle.ControleProcessos.Processo import Processo
+
+
 class Motor:
     def __init__(self):
         self.process_table = list()
@@ -8,6 +11,6 @@ class Motor:
             dt = self.process_table.pop()
             dt.executar(object_list)
 
-    def adicionar_processo(self, Processos:list):
+    def adicionar_processo(self, Processos:Processo):
         self.process_table.append(Processos)
-        print(Processos)
+        print('Executanto Processo :: {}'.format(Processos.get_name()))

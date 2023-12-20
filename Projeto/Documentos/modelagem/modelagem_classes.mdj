@@ -6401,7 +6401,7 @@
 													"top": 413,
 													"width": 741.12060546875,
 													"height": 13,
-													"text": "ExtracaoTextoAgronomia"
+													"text": "ExtracaoDadosAgronomia"
 												},
 												{
 													"_type": "LabelView",
@@ -14075,7 +14075,7 @@
 							"_parent": {
 								"$ref": "AAAAAAGKa8OvpZar8Ww="
 							},
-							"name": "ExtracaoTextoAgronomia",
+							"name": "ExtracaoDadosAgronomia",
 							"ownedElements": [
 								{
 									"_type": "UMLAssociation",

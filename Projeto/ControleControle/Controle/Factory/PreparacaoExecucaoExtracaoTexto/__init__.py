@@ -1,7 +1,8 @@
-from Projeto.ControleControle.Controle.Factory.PreparacaoExecucaoExtracaoTexto.ExtracaoTextoAgronomia import ExtracaoTextoAgronomia
+from Projeto.ControleControle.Controle.Factory.PreparacaoExecucaoExtracaoTexto.ExtracaoTexto import ExtracaoDeTexto
+from Projeto.ControleControle.Controle.Factory.PreparacaoExecucaoExtracaoTexto.ExtracaoTextoAgronomia import ExtracaoDadosAgronomia
 
 
 class PreparacaoExecucaoExtracaoTexto:
     @staticmethod
     def get_preparacao() -> list:
-        return [ExtracaoTextoAgronomia(nome='ext_agronomia', prioridade=9)]
+        return [ExtracaoDeTexto(nome='ext_texto_geral', prioridade=9)]

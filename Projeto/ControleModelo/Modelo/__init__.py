@@ -1,21 +1,17 @@
-import requests
+from Projeto.ControleModelo.Modelo.Os import Os
+from Projeto.ControleModelo.Arquivo import Arquivo
 
 
-class Modelo:
-    def __init__(self, Os):
-        self.os = Os
+class Modelo(Os):
+    def __init__(self):
+        super().__init__()
 
-    def download(self, nome, caminho, link):
-        response = requests.get(url=link)
-        if response.status_code == 200:
-            caminho_completo = self.os.path.join(caminho, nome)
-            with open(caminho_completo, 'wb') as arquivo:
-                arquivo.write(response.content)
-            print(f"Arquivo '{nome}' baixado com sucesso em '{caminho_completo}'.")
-        else:
-            print(f"Erro ao baixar o arquivo '{nome}' do link '{link}'. Código de status: {response.status_code}")
 
-    def save(self, Arquivo):
-        print(Arquivo.get_link())
-        print(Arquivo.get_name())
-        print(Arquivo.get_caminho())
+    def download_list_download(self,download_list:list)->None:
+        for elemento in download_list:
+            self.download_arquivo(Arquivo=elemento)
+
+    def get_pdf_arq_content(self,Arquivo:Arquivo)->list:
+        self.set_ponteiro(caminho_facrionado=Arquivo.get_caminho())
+        eee = caminho_facrionado=Arquivo.get_name()
+        return self.extract_pdf_content_pointer_path(Arquivo=Arquivo)

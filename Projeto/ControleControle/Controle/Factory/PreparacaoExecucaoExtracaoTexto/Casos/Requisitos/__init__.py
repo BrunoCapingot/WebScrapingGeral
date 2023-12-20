@@ -1,5 +1,5 @@
 from Projeto.ControleModelo.Modelo.Os import Os
-from Projeto.ControleModelo.Modelo.DataInput import DataInput
+from Projeto.ControleModelo.DataInput import DataInput
 
 class Requisitos:
     def requisito_extracao_pre_requisito(self,dado:list):

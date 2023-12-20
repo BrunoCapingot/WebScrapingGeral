@@ -1,5 +1,5 @@
 class Arquivo:
-    def __init__(self, nome, caminho,conteudo):
+    def __init__(self, nome, caminho, conteudo=''):
         self.atribute_table = [nome, caminho,conteudo]
 
     def set_name(self, nome):  self.atribute_table[0] = nome

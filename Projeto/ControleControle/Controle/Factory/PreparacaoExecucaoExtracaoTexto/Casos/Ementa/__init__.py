@@ -1,5 +1,5 @@
 from Projeto.ControleModelo.Modelo.Os import Os
-from Projeto.ControleModelo.Modelo.DataInput import DataInput
+from Projeto.ControleModelo.DataInput import DataInput
 from Projeto.ControleControle.Controle.Factory.PreparacaoExecucaoExtracaoTexto.Casos.Requisitos import Requisitos
 from sys import argv
 import os

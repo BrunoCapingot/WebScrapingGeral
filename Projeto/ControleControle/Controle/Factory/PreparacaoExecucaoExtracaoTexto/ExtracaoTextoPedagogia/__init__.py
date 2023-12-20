@@ -1,6 +1,6 @@
 from Projeto.ControleModelo import ControleModelo
-from Projeto.ControleModelo.Modelo.Arquivo import Arquivo
-from Projeto.ControleModelo.Modelo.DataInput import DataInput
+from Projeto.ControleModelo.Arquivo import Arquivo
+from Projeto.ControleModelo.DataInput import DataInput
 from Projeto.ControleModelo.Modelo.Os import Os
 from Projeto.ControleControle.Controle.ControleProcessos.Processo import Processo
 
